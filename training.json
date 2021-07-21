@@ -1,13 +1,12 @@
 {
   "title" : "KYPO Cyber Range Training Platform - Demo Content",
   "description" : "The demo contains all types of levels to demonstrate the training capabilities of the KYPO Cyber Range Platform.",
-  "prerequisities" : [ ],
+  "prerequisites" : [ ],
   "outcomes" : [ ],
   "state" : "UNRELEASED",
   "show_stepper_bar" : true,
   "levels" : [ {
     "title" : "Info",
-    "max_score" : 0,
     "level_type" : "INFO_LEVEL",
     "order" : 0,
     "estimated_duration" : 0,
@@ -73,20 +72,136 @@
     "attachments" : [ ]
   }, {
     "title" : "Test Example",
-    "max_score" : 0,
     "level_type" : "ASSESSMENT_LEVEL",
     "order" : 4,
     "estimated_duration" : 5,
-    "questions" : "[{\"question_type\":\"FFQ\",\"correct_choices\":[\"flag.txt\"],\"answer_required\":true,\"order\":0,\"penalty\":0,\"points\":100,\"text\":\"What was the name of a file storing the flag?\"},{\"question_type\":\"MCQ\",\"choices\":[{\"text\":\"Yes\",\"order\":0,\"is_correct\":false},{\"text\":\"No\",\"order\":1,\"is_correct\":true}],\"answer_required\":true,\"order\":1,\"penalty\":0,\"points\":100,\"text\":\"The Telnet service was running on the default port.\"},{\"question_type\":\"EMI\",\"rows\":[\"HTTP\",\"SSH\",\"HTTPS\",\"Telnet\"],\"cols\":[\"22\",\"23\",\"80\",\"443\"],\"correct_answers\":[{\"x\":1,\"y\":0},{\"x\":3,\"y\":1},{\"x\":0,\"y\":2},{\"x\":2,\"y\":3}],\"answer_required\":true,\"order\":2,\"penalty\":0,\"points\":100,\"text\":\"Match services with their default port numbers.\"}]",
+    "questions" : [ {
+      "question_type" : "FFQ",
+      "text" : "What was the name of a file storing the flag?",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 0,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "flag.txt",
+        "correct" : true,
+        "order" : 0
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "The Telnet service was running on the default port.",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 1,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Yes",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "No",
+        "correct" : true,
+        "order" : 1
+      } ]
+    }, {
+      "question_type" : "EMI",
+      "text" : "Match services with their default port numbers.",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 2,
+      "answer_required" : true,
+      "extended_matching_options" : [ {
+        "text" : "22",
+        "order" : 0
+      }, {
+        "text" : "23",
+        "order" : 1
+      }, {
+        "text" : "80",
+        "order" : 2
+      }, {
+        "text" : "443",
+        "order" : 3
+      } ],
+      "extended_matching_statements" : [ {
+        "text" : "HTTP",
+        "order" : 0,
+        "correct_option_order" : 2
+      }, {
+        "text" : "SSH",
+        "order" : 1,
+        "correct_option_order" : 0
+      }, {
+        "text" : "HTTPS",
+        "order" : 2,
+        "correct_option_order" : 3
+      }, {
+        "text" : "Telnet",
+        "order" : 3,
+        "correct_option_order" : 1
+      } ]
+    } ],
     "instructions" : "A simple test.",
     "assessment_type" : "TEST"
   }, {
     "title" : "Assessment Example",
-    "max_score" : 0,
     "level_type" : "ASSESSMENT_LEVEL",
     "order" : 5,
     "estimated_duration" : 5,
-    "questions" : "[{\"question_type\":\"MCQ\",\"choices\":[{\"text\":\"Graphical user interface of KYPO\",\"order\":0,\"is_correct\":false},{\"text\":\"SSH\",\"order\":1,\"is_correct\":false}],\"answer_required\":true,\"order\":0,\"penalty\":0,\"points\":0,\"text\":\"How did you connect to the client?\"},{\"question_type\":\"EMI\",\"rows\":[\"Everything went smoothly\",\"The User Interface is nice\",\"The test was easy\"],\"cols\":[\"Very much\",\"A little bit\",\"Not really\",\"Not at all\"],\"correct_answers\":[],\"answer_required\":true,\"order\":1,\"penalty\":0,\"points\":0,\"text\":\"Do you agree that... ?\"},{\"question_type\":\"FFQ\",\"correct_choices\":[],\"answer_required\":false,\"order\":2,\"penalty\":0,\"points\":0,\"text\":\"How would you improve this demo?\"}]",
+    "questions" : [ {
+      "question_type" : "MCQ",
+      "text" : "How did you connect to the client?",
+      "points" : 0,
+      "penalty" : 0,
+      "order" : 0,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Graphical user interface of KYPO",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "SSH",
+        "correct" : false,
+        "order" : 1
+      } ]
+    }, {
+      "question_type" : "EMI",
+      "text" : "Do you agree that... ?",
+      "points" : 0,
+      "penalty" : 0,
+      "order" : 1,
+      "answer_required" : true,
+      "extended_matching_options" : [ {
+        "text" : "Very much",
+        "order" : 0
+      }, {
+        "text" : "A little bit",
+        "order" : 1
+      }, {
+        "text" : "Not really",
+        "order" : 2
+      }, {
+        "text" : "Not at all",
+        "order" : 3
+      } ],
+      "extended_matching_statements" : [ {
+        "text" : "Everything went smoothly",
+        "order" : 0
+      }, {
+        "text" : "The User Interface is nice",
+        "order" : 1
+      }, {
+        "text" : "The test was easy",
+        "order" : 2
+      } ]
+    }, {
+      "question_type" : "FFQ",
+      "text" : "How would you improve this demo?",
+      "points" : 0,
+      "penalty" : 0,
+      "order" : 2,
+      "answer_required" : false
+    } ],
     "instructions" : "Please answer the questions. The last question is voluntary.",
     "assessment_type" : "QUESTIONNAIRE"
   } ],

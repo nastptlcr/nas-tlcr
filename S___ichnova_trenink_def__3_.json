@@ -1,0 +1,238 @@
+{
+  "title" : "SŠ Čichnova trenink def",
+  "description" : "Test your capabilities in the KYPO Cyber Range Platform.",
+  "prerequisites" : [ ],
+  "outcomes" : [ ],
+  "state" : "UNRELEASED",
+  "show_stepper_bar" : true,
+  "levels" : [ {
+    "title" : "Info",
+    "level_type" : "INFO_LEVEL",
+    "order" : 0,
+    "estimated_duration" : 0,
+    "content" : "# Little summary before you start\n\nThis training contains all types of levels to test your capabilities of the KYPO Cyber Range Platform.\n\n| Level | Level Name | Level Type |\n|:------:|------| ------ |\n| 1. | Info | Info |\n| 2. | Finding Open Ports | Training |\n| 3. | Connecting via Telnet | Training |\n| 4. | Privilege Escalation | Training |\n| 5. | Test your knowledge | Assessment |\n| 6. | Feedback | Assessment |\n\n\n## Info about each level:\n\n\n* \n### Info\nYou are currently on this level. It contains information about this whole training and what awaits you in next levels.\n\n\n* \n### Finding open ports\nThe level will test you on some basic commands. Your goal is to find an open port on server.\n\n\n* \n### Connecting Via Telnet\nThis level's challenge is to connect to the server machine without a password and discover the secret answer. Don't worry, you will have a little help there :)\n\n\n* \n### Privilege Escalation\nThis level is a little bit bigger challenge and by that we mean you have to gain root privileges and read an answer available only to a root user. Enjoy! \n\n\n* \n### Test your knowledge\nThis level contains a simple test. This test is supposed to additionally test you, your answers and how much you understand this topic.\n\n\n* \n### Feedback\nThis level contains a simple questionnaire so we will get some feedback and we will be able to make this training better and better. "
+  }, {
+    "title" : "Finding open ports",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 1,
+    "estimated_duration" : 10,
+    "answer" : "2323",
+    "answer_variable_name" : null,
+    "content" : "Your main goal is to get access to a **server**. There is **telnet** service and it is not running on a default open port. You have to find the **port** on which telnet service is running. Your answer will be a **port number**. \n\n1. Access **client console CLI** and open it. Your username and password are **kypo**.\n2. Find the **port number**. You can use a lot of options how to find the correct port number. ",
+    "solution" : "1. Connect to the client using either of the options.\n\n2. Look for open ports using the command **`nmap server`**. You can see **ssh** running on port **22** and some other service running on port **2323**. This has to be the **telnet** service.\n\n3. Enter **`2323`** as the answer.",
+    "solution_penalized" : true,
+    "hints" : [ {
+      "title" : " Tool to find open ports",
+      "content" : "Use **nmap** and if you don't know how to use it, write **`nmap --help`**.",
+      "hint_penalty" : 50,
+      "order" : 0
+    } ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 100,
+    "variant_answers" : false,
+    "reference_solution" : [ ]
+  }, {
+    "title" : "Connecting via Telnet",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 2,
+    "estimated_duration" : 10,
+    "answer" : "Top_Secret_Flag",
+    "answer_variable_name" : null,
+    "content" : "Now you have the **port number** and you would like to connect, but you don't have any credentials. Luckily you know that user **`alice`** has a weak password. You might be able to guess it. The answer is in alices home directory. There is a list of common passwords placed in your home directory for your convenience. Try to use a specific tool to get the password. After you get the password, join the server with username and your newly found password. Then search in **`alice`** home directory for the answer.\n\n",
+    "solution" : "1. You know that **alice** has a weak password so you can try a dictionary attack. A list of common passwords is ready in your home directory. One of possible tools to make a password attack is **hydra**. A command to find the password is **`hydra -l alice -P passlist.txt telnet://server:2323`**. This will reveal alices password **`bacon`**.\n\n2. Now you can connect to the server by using **`telnet server 2323`**, entering username **`alice`** and her password **`bacon`**.\n\n3. To read the answer you can use **`cat flag.txt`**. The answer is **`Top_Secret_Flag`**.\n",
+    "solution_penalized" : true,
+    "hints" : [ {
+      "title" : "Hydra",
+      "content" : "Try using Hydra command to get Alices password. ",
+      "hint_penalty" : 20,
+      "order" : 0
+    }, {
+      "title" : "Connecting to alice",
+      "content" : "For connecting to alice server you will need to use a command with **telnet port** and **IP Address**.",
+      "hint_penalty" : 20,
+      "order" : 1
+    } ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 100,
+    "variant_answers" : false,
+    "reference_solution" : [ ]
+  }, {
+    "title" : "Privilege Escalation",
+    "level_type" : "TRAINING_LEVEL",
+    "order" : 3,
+    "estimated_duration" : 15,
+    "answer" : "Cant_Guess_This",
+    "answer_variable_name" : null,
+    "content" : "Great! You managed to login to the server as **alice** but there is not much you can do as this user. Can you find a way to become **root**? Try and look into the root directory ;).\n\nOne of common privilege escalation attack vectors is badly configured **sudo**. To see what you can use sudo for, use the **`sudo --list`** command.",
+    "solution" : "1. You can see that the only command you can use sudo on is **` sudo less /home/alice/flag.txt`**. There is not much to see in the flag, but you can run this as **root**. Is there a way to get a shell?\n\n2. There is, all you have to do is enter **`!sh`** while running the **`sudo less /home/alice/flag.txt`** to get a root shell.\n\n3. To get the answer, use **`cd`** to enter the root directory and **`cat flag.txt`** to read the answer. The answer is **`Cant_Guess_This`**.",
+    "solution_penalized" : true,
+    "hints" : [ {
+      "title" : "Using the privilege escalation",
+      "content" : "You have probably figured out that you can run **sudo** on a certain **less** command. To get a shell run **`sudo less /home/alice/flag.txt`**, enter the password. Type **`!sh`** to get a root shell.",
+      "hint_penalty" : 30,
+      "order" : 0
+    } ],
+    "incorrect_answer_limit" : 10,
+    "attachments" : [ ],
+    "max_score" : 100,
+    "variant_answers" : false,
+    "reference_solution" : [ ]
+  }, {
+    "title" : "Test",
+    "level_type" : "ASSESSMENT_LEVEL",
+    "order" : 4,
+    "estimated_duration" : 5,
+    "questions" : [ {
+      "question_type" : "FFQ",
+      "text" : "What was alices password?",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 0,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "bacon",
+        "correct" : true,
+        "order" : 0
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "The Telnet service was running on the default port.",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 1,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Yes",
+        "correct" : false,
+        "order" : 0
+      }, {
+        "text" : "No",
+        "correct" : true,
+        "order" : 1
+      } ]
+    }, {
+      "question_type" : "FFQ",
+      "text" : "What was the name of the text document in which were the passwords stored?",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 2,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "passlist.txt",
+        "correct" : true,
+        "order" : 0
+      } ]
+    }, {
+      "question_type" : "MCQ",
+      "text" : "From how many passwords were you guessing with hydra?",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 3,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "More than 500",
+        "correct" : true,
+        "order" : 0
+      }, {
+        "text" : "Less than 500",
+        "correct" : false,
+        "order" : 1
+      } ]
+    }, {
+      "question_type" : "EMI",
+      "text" : "Match the IP Addresses with correct devices.",
+      "points" : 100,
+      "penalty" : 0,
+      "order" : 4,
+      "answer_required" : true,
+      "extended_matching_options" : [ {
+        "text" : "192.168.30.5",
+        "order" : 0
+      }, {
+        "text" : "192.168.20.5 ",
+        "order" : 1
+      }, {
+        "text" : "100.100.100.5",
+        "order" : 2
+      } ],
+      "extended_matching_statements" : [ {
+        "text" : "Client IP Address",
+        "order" : 0,
+        "correct_option_order" : 0
+      }, {
+        "text" : "Server IP Address",
+        "order" : 1,
+        "correct_option_order" : 1
+      }, {
+        "text" : "Router IP Address",
+        "order" : 2,
+        "correct_option_order" : 2
+      } ]
+    } ],
+    "instructions" : "A simple test.",
+    "assessment_type" : "TEST"
+  }, {
+    "title" : "Feedback",
+    "level_type" : "ASSESSMENT_LEVEL",
+    "order" : 5,
+    "estimated_duration" : 2,
+    "questions" : [ {
+      "question_type" : "FFQ",
+      "text" : "What do you think about this training? Did you learn anything new?",
+      "points" : 0,
+      "penalty" : 0,
+      "order" : 0,
+      "answer_required" : true,
+      "choices" : [ {
+        "text" : "Answer 1",
+        "correct" : true,
+        "order" : 0
+      } ]
+    }, {
+      "question_type" : "EMI",
+      "text" : "Do you agree that...?",
+      "points" : 0,
+      "penalty" : 0,
+      "order" : 1,
+      "answer_required" : false,
+      "extended_matching_options" : [ {
+        "text" : "Yes",
+        "order" : 0
+      }, {
+        "text" : "A little bit",
+        "order" : 1
+      }, {
+        "text" : "Not really",
+        "order" : 2
+      }, {
+        "text" : "not at all",
+        "order" : 3
+      } ],
+      "extended_matching_statements" : [ {
+        "text" : "The test was easy?",
+        "order" : 0
+      }, {
+        "text" : "You used a lot of time googling??",
+        "order" : 1
+      } ]
+    }, {
+      "question_type" : "FFQ",
+      "text" : "How would you improve this demo?",
+      "points" : 0,
+      "penalty" : 0,
+      "order" : 2,
+      "answer_required" : false,
+      "choices" : [ {
+        "text" : "Answer 1",
+        "correct" : true,
+        "order" : 0
+      } ]
+    } ],
+    "instructions" : "Please answer the questions. The last question is voluntary.",
+    "assessment_type" : "QUESTIONNAIRE"
+  } ],
+  "estimated_duration" : 42,
+  "variant_sandboxes" : false
+}

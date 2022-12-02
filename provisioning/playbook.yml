@@ -15,7 +15,7 @@
 
 - name: user access
   hosts:
-      - user-accessible
+      - client
   gather_facts: no
   become: yes
   become_user: root

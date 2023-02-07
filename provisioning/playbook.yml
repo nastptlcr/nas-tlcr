@@ -6,8 +6,6 @@
       - hosts
   gather_facts: yes
   become: yes
-  become_user: root
-
   tasks:
       - include_role:
             name: kypo-disable-qxl
@@ -18,8 +16,6 @@
       - client
   gather_facts: no
   become: yes
-  become_user: root
-
   tasks:
       - include_role:
             name: kypo-user-access
@@ -32,25 +28,16 @@
         loop_control:
             loop_var: user
 
-
-
-- name: Setting up Telnet server and client
-  hosts:
-    - server
-    - client
+- name: set up server
+  hosts: server
   become: yes
-  tasks:
-      - name: Test network connection using apt
-        apt:
-          update_cache: yes
-        register: apt_update
-        ignore_errors: yes
+  roles:
+    - name: server
 
-      - name: Restart if broken network
-        reboot:
-        when: apt_update is failed
-
-      - include_role:
-            name: "{{ inventory_hostname }}"
+- name: set up client
+  hosts: client
+  become: yes
+  roles:
+    - name: client
 
 ...

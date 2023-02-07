@@ -5,7 +5,8 @@
   user:
     name: 'kypo'
     shell: '/bin/bash'
-    group: 'sudo'
+    groups:
+      - 'sudo'
     append: yes
 
 - name: Create alias for server
@@ -28,16 +29,4 @@
     owner: kypo
     mode: 0644
 
-- name: Allow SSH password authentication
-  lineinfile:
-    path: '/etc/ssh/sshd_config'
-    line: 'PasswordAuthentication yes'
-    regexp: '^#?PasswordAuthentication'
-  register: password_auth
-
-- name: Restart sshd service
-  service:
-    name: sshd
-    state: restarted
-  when: password_auth is changed
 ...

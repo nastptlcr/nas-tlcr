@@ -1,14 +1,6 @@
 ---
 # This is a role for setting up the client.
 
-- name: Set default shell and sudo
-  user:
-    name: 'kypo'
-    shell: '/bin/bash'
-    groups:
-      - 'sudo'
-    append: yes
-
 - name: Create alias for server
   lineinfile:
     path: '/etc/hosts'
@@ -25,8 +17,8 @@
 - name: Add passwords file to the home directory
   copy:
     src: passlist.txt
-    dest: /home/kypo/passlist.txt
-    owner: kypo
+    dest: /home/user/passlist.txt
+    owner: user
     mode: 0644
 
 ...

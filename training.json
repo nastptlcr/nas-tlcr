@@ -2,7 +2,7 @@
   "title" : "KYPO Cyber Range Training Platform - Demo Content",
   "description" : "The demo contains all types of levels to demonstrate the training capabilities of the KYPO Cyber Range Platform.",
   "prerequisites" : [ ],
-  "outcomes" : [ ],
+  "outcomes" : [ "Scanning ports with nmap", "Password guessing with hydra at telnet", "Privilege escalation using misconfigured sudo" ],
   "state" : "UNRELEASED",
   "show_stepper_bar" : true,
   "levels" : [ {
@@ -26,7 +26,7 @@
     "level_type" : "TRAINING_LEVEL",
     "order" : 2,
     "estimated_duration" : 10,
-    "minimal_possible_solve_time" : null,
+    "minimal_possible_solve_time" : 1,
     "answer" : "2323",
     "answer_variable_name" : null,
     "content" : "Your goal is to get access to a **server**. You know that there is a **telnet** service running on the server but it is not running on the default port. Your first task is to find the **port** on which the telnet service is running. The answer is the port number.\n",
@@ -44,14 +44,14 @@
     "variant_answers" : false,
     "reference_solution" : [ ],
     "mitre_techniques" : [ ],
-    "expected_commands" : [ ],
-    "commands_required" : false
+    "expected_commands" : [ "ls", "nmap" ],
+    "commands_required" : true
   }, {
     "title" : "Connecting via Telnet",
     "level_type" : "TRAINING_LEVEL",
     "order" : 3,
     "estimated_duration" : 10,
-    "minimal_possible_solve_time" : null,
+    "minimal_possible_solve_time" : 1,
     "answer" : "Top_Secret_Flag",
     "answer_variable_name" : null,
     "content" : "Now you have the port number and you would like to connect, but you don't have any credentials. Luckily you know that user **`alice`** has a weak password. You might be able to guess it. The answer is in alices home directory. There is a list of common passwords placed in your home directory for your convenience.\n\n",
@@ -74,14 +74,14 @@
     "variant_answers" : false,
     "reference_solution" : [ ],
     "mitre_techniques" : [ ],
-    "expected_commands" : [ ],
-    "commands_required" : false
+    "expected_commands" : [ "hydra", "telnet", "cat" ],
+    "commands_required" : true
   }, {
     "title" : "Privilege Escalation",
     "level_type" : "TRAINING_LEVEL",
     "order" : 4,
     "estimated_duration" : 15,
-    "minimal_possible_solve_time" : null,
+    "minimal_possible_solve_time" : 1,
     "answer" : "Cant_Guess_This",
     "answer_variable_name" : null,
     "content" : "Great, you managed to login to the server as **alice** but there is not much you can do as **alice**. Can you find a way to become **root**? The answer is in the root directory.\n\nOne of common privilege escalation attack vectors is badly configured **sudo**. To see what you can use sudo for, use the **`sudo --list`** command.\n",
@@ -99,8 +99,8 @@
     "variant_answers" : false,
     "reference_solution" : [ ],
     "mitre_techniques" : [ ],
-    "expected_commands" : [ ],
-    "commands_required" : false
+    "expected_commands" : [ "cat", "ls", "sudo" ],
+    "commands_required" : true
   }, {
     "title" : "Test Example",
     "level_type" : "ASSESSMENT_LEVEL",

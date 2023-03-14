@@ -33,14 +33,14 @@
   copy:
     dest: '/home/{{ username }}/flag.txt'
     owner: '{{ username }}'
-    content: '{{ flag }}'
+    content: "{{ flag }}\n"
     mode: '0600'
 
 - name: Place second flag
   copy:
     dest: '/root/flag.txt'
     owner: root
-    content: '{{ flag_2 }}'
+    content: "{{ flag_2 }}\n"
     mode: '0600'
 
 - name: Create alias for client

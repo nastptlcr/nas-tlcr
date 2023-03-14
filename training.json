@@ -43,7 +43,11 @@
     "max_score" : 50,
     "variant_answers" : true,
     "reference_solution" : [ ],
-    "mitre_techniques" : [ ],
+    "mitre_techniques" : [ {
+      "technique_key" : "TA0007.T1046"
+    }, {
+      "technique_key" : "TA0043.T1595"
+    } ],
     "expected_commands" : [ "ls", "nmap" ],
     "commands_required" : true
   }, {
@@ -55,7 +59,7 @@
     "answer" : null,
     "answer_variable_name" : "alice_flag",
     "content" : "Now you have the port number and you would like to connect, but you don't have any credentials. Luckily you know that user **`alice`** has a weak password. You might be able to guess it. The answer is in alices home directory. There is a list of common passwords placed in your home directory for your convenience.\n\n",
-    "solution" : "1. You know that **alice** has a weak password so you can try a dictionary attack. A list of common passwords is ready in your home directory. One of possible tools to make a password attack is **hydra**. A command to find the password is **`hydra -l alice -P passlist.txt telnet://192.168.20.5:${telnet_port}`**. This will reveal alices password **`bacon`**.\n\n2. Now you can connect to the server by using **`telnet 192.168.20.5 ${telnet_port}`**, entering username **`alice`** and her password **`bacon`**.\n\n3. To read the answer you can use **`cat flag.txt`**. The answer is **`${ANSWER}`**\n",
+    "solution" : "Replace **${telnet_port}** with the port number from the previous level:\n\n1. You know that **alice** has a weak password so you can try a dictionary attack. A list of common passwords is ready in your home directory. One of possible tools to make a password attack is **hydra**. A command to find the password is **`hydra -l alice -P passlist.txt telnet://192.168.20.5:${telnet_port}`**. This will reveal alices password **`bacon`**.\n\n2. Now you can connect to the server by using **`telnet 192.168.20.5 ${telnet_port}`**, entering username **`alice`** and her password **`bacon`**.\n\n3. To read the answer you can use **`cat flag.txt`**. The answer is **`${ANSWER}`**\n",
     "solution_penalized" : true,
     "hints" : [ {
       "title" : "Connecting using telnet",
@@ -73,7 +77,9 @@
     "max_score" : 100,
     "variant_answers" : true,
     "reference_solution" : [ ],
-    "mitre_techniques" : [ ],
+    "mitre_techniques" : [ {
+      "technique_key" : "TA0006.T1110"
+    } ],
     "expected_commands" : [ "hydra", "telnet", "cat" ],
     "commands_required" : true
   }, {
@@ -98,7 +104,11 @@
     "max_score" : 100,
     "variant_answers" : true,
     "reference_solution" : [ ],
-    "mitre_techniques" : [ ],
+    "mitre_techniques" : [ {
+      "technique_key" : "TA0004.T1068"
+    }, {
+      "technique_key" : "TA0043.T1592"
+    } ],
     "expected_commands" : [ "cat", "ls", "sudo" ],
     "commands_required" : true
   }, {

@@ -16,6 +16,9 @@
   become: yes
   roles:
     - name: server
+      telnet_port: "{{ telnet_port }}"
+      flag: "{{ alice_flag }}"
+      flag_2: "{{ root_flag }}"
 
 - name: set up client
   hosts: client
@@ -26,5 +29,12 @@
       kypo_user_access_password: Password123
       kypo_user_access_sudo: True
     - name: client
+
+- name: set up command logging
+  hosts: hosts
+  become: yes
+  roles:
+    - role: sandbox-logging
+      slf_destination_port: '{% if hostvars["man"] is defined -%} 514 {%- else -%} 515 {%- endif %}'
 
 ...

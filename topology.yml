@@ -2,13 +2,13 @@ name: kypo-crp-demo-training
 
 hosts:
   - name: server
-    base_box: 
+    base_box:
       image: ubuntu-focal-x86_64
       man_user: ubuntu
     flavor: standard.small
 
   - name: client
-    base_box: 
+    base_box:
       image: ubuntu-focal-x86_64
       man_user: ubuntu
     flavor: standard.small
@@ -44,4 +44,10 @@ router_mappings:
       network: client-switch
       ip: 192.168.30.1
 
-groups: []
+groups:
+  - name: mon-lin
+    nodes:
+      - router
+      - server
+      - client
+

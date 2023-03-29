@@ -2,6 +2,8 @@
 
 Linear game for [KYPO CRP](https://docs.crp.kypo.muni.cz/).
 
+Follow [general instructions](https://docs.crp.kypo.muni.cz/basic-concepts/typical-training-workflow/training-workflow-cloud/) to set up the game.
+
 ## Game Levels Summary
 - `nmap` port scanning
 - `hydra` password guessing at `telnet` 

@@ -16,8 +16,8 @@ hosts:
 routers:
   - name: router
     base_box:
-      image: debian-9-x86_64
-      man_user: debian
+      image: opnsense
+      man_user: freebsd
     flavor: standard.small
 
 networks:

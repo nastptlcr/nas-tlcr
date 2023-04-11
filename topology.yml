@@ -12,6 +12,9 @@ hosts:
       image: ubuntu-focal-x86_64
       man_user: ubuntu
     flavor: standard.small
+    volumes:
+      - size: 16
+      - size: 2
 
 routers:
   - name: router

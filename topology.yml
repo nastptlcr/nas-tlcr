@@ -1,50 +1,84 @@
-name: kypo-crp-demo-training
+---
+name: vpn-topology
 
 hosts:
-  - name: server
-    base_box: 
-      image: ubuntu-focal-x86_64
-      man_user: ubuntu
-    flavor: standard.small
+  - name: dmz-vpn
+    base_box:
+        image: debian-10
+        man_user: debian
+    flavor: standard.medium
 
   - name: client
-    base_box: 
-      image: ubuntu-focal-x86_64
-      man_user: ubuntu
-    flavor: standard.small
-    volumes:
-      - size: 16
-      - size: 2
+    base_box:
+        image: windows-10
+        man_user: windows
+        mng_protocol: winrm
+    flavor: standard.large
 
 routers:
-  - name: router
+  - name: firewall
     base_box:
-      image: debian-9-x86_64
-      man_user: debian
-    flavor: standard.small
+        image: debian-10-x86_64
+        man_user: debian
+    flavor: standard.medium
+
+  - name: internet-router
+    base_box:
+        image: debian-9-x86_64
+        man_user: debian
+    flavor: csirtmu.small2x4
 
 networks:
-  - name: server-switch
-    cidr: 192.168.20.0/24
-    accessible_by_user: False
+  - name: appSegment
+    cidr: 172.18.1.0/24
 
-  - name: client-switch
-    cidr: 192.168.30.0/24
+  - name: userSegment
+    cidr: 172.18.3.0/24
+
+  - name: dmzSegment
+    cidr: 172.18.2.0/24
+
+  - name: internet
+    cidr: 185.48.120.0/21
+
+  - name: clientInternet
+    cidr: 46.167.206.0/24
 
 net_mappings:
-    - host: server
-      network: server-switch
-      ip: 192.168.20.5
-    - host: client
-      network: client-switch
-      ip: 192.168.30.5
+  - host: dmz-vpn
+    network: dmzSegment
+    ip: 172.18.2.22
+
+  - host: client
+    network: clientInternet
+    ip: 46.167.206.45
 
 router_mappings:
-    - router: router
-      network: server-switch
-      ip: 192.168.20.1
-    - router: router
-      network: client-switch
-      ip: 192.168.30.1
+  - router: internet-router
+    network: internet
+    ip: 185.48.120.1
 
-groups: []
+  - router: firewall
+    network: dmzSegment
+    ip: 172.18.2.1
+
+  - router: firewall
+    network: userSegment
+    ip: 172.18.3.1
+
+  - router: firewall
+    network: appSegment
+    ip: 172.18.1.1
+
+  - router: internet-router
+    network: clientInternet
+    ip: 46.167.206.1
+
+groups:
+  - name: user-accessible
+    nodes:
+      - dmz-vpn
+  - name: windows
+    nodes:
+      - client
+

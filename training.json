@@ -1,5 +1,5 @@
 {
-  "title" : "KYPO Cyber Range Training Platform - Demo Content",
+  "title" : "KYPO Cyber Range Training Platform - Demo Content (terminal)",
   "description" : "The demo contains all types of levels to demonstrate the training capabilities of the KYPO Cyber Range Platform.",
   "prerequisites" : [ ],
   "outcomes" : [ "Scanning ports with nmap", "Password guessing with hydra at telnet", "Privilege escalation using misconfigured sudo" ],

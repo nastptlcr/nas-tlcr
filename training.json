@@ -44,9 +44,9 @@
     "variant_answers" : true,
     "reference_solution" : [ ],
     "mitre_techniques" : [ {
-      "technique_key" : "TA0007.T1046"
-    }, {
       "technique_key" : "TA0043.T1595"
+    }, {
+      "technique_key" : "TA0007.T1046"
     } ],
     "expected_commands" : [ "ls", "nmap" ],
     "commands_required" : true
@@ -105,9 +105,9 @@
     "variant_answers" : true,
     "reference_solution" : [ ],
     "mitre_techniques" : [ {
-      "technique_key" : "TA0004.T1068"
-    }, {
       "technique_key" : "TA0043.T1592"
+    }, {
+      "technique_key" : "TA0004.T1068"
     } ],
     "expected_commands" : [ "cat", "ls", "sudo" ],
     "commands_required" : true

@@ -28,10 +28,10 @@ networks:
 net_mappings:
     - host: server
       network: server-switch
-      ip: 192.168.20.5
+      ip: 192.168.20.20
     - host: client
       network: server-switch
-      ip: 192.168.20.6
+      ip: 192.168.20.30
 
 router_mappings:
     - router: router

@@ -3,22 +3,22 @@ name: kypo-library-demo-training
 hosts:
   - name: server
     base_box:
-      image: ubuntu-focal-x86_64
+      image: ami-04e601abe3e1a910f
       man_user: ubuntu
-    flavor: standard.small
+    flavor: t3.small
 
   - name: client
     base_box:
-      image: ubuntu-focal-x86_64
+      image: ami-04e601abe3e1a910f
       man_user: ubuntu
-    flavor: standard.small
+    flavor: t3.small
 
 routers:
   - name: router
     base_box:
-      image: debian-9-x86_64
-      man_user: debian
-    flavor: standard.small
+      image: ami-04e601abe3e1a910f
+      man_user: ubuntu
+    flavor: t3.small
 
 networks:
   - name: server-switch

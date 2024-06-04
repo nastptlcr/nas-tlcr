@@ -16,7 +16,7 @@ hosts:
 routers:
   - name: router
     base_box:
-      image: ami-0afda5d0ec8ef385a
+      image: ami-0ed032b9fd55868d3
       man_user: admin
     flavor: t3.small
 

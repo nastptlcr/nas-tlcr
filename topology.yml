@@ -17,7 +17,7 @@ routers:
   - name: router
     base_box:
       image: ami-042e6fdb154c830c5
-      man_user: debian
+      man_user: admin
     flavor: t3.small
 
 networks:

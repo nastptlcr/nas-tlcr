@@ -16,8 +16,8 @@ hosts:
 routers:
   - name: router
     base_box:
-      image: ami-04e601abe3e1a910f
-      man_user: ubuntu
+      image: ami-02a03190ff8515b42
+      man_user: debian
     flavor: t3.small
 
 networks:
